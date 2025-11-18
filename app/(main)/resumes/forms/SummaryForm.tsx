@@ -18,7 +18,7 @@ export default function SummaryForm({resumeData, setResumeData}:EditorProps) {
     const subscription = summaryForm.watch(async (values) => {
         const isValid = await summaryForm.trigger();
         if (!isValid) return;
-        setResumeData(prev => ({...prev, ...values,}));
+        setResumeData({...resumeData, ...values});
     });
 
   return () => subscription.unsubscribe();
