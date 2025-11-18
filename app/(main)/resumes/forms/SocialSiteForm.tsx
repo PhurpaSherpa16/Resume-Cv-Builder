@@ -1,11 +1,10 @@
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { EditorProps } from '@/lib/type'
-import { socialSiteSchema, SocialSiteValues } from '@/lib/validation'
+import { ResumeValues, socialSiteSchema, SocialSiteValues } from '@/lib/validation'
 import { zodResolver } from '@hookform/resolvers/zod'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { BsGithub } from 'react-icons/bs'
 import { FaBehance, FaDribbble, FaFacebook, FaGithub, FaInstagram, FaKaggle, FaMedium } from 'react-icons/fa'
 import { TbWorldWww } from 'react-icons/tb'
 
@@ -28,7 +27,7 @@ export default function SocialSiteForm({resumeData, setResumeData}:EditorProps) 
         const {unsubscribe} = socialSiteForm.watch(async (_, {name}) =>{
             const valid = await socialSiteForm.trigger(name)
             if(!valid) return
-            setResumeData(prev => ({...prev, [name]:socialSiteForm.getValues(name)}))
+            setResumeData((prev: unknown) => ({...prev, [name]:socialSiteForm.getValues(name)}))
         })
         return unsubscribe
     },[socialSiteForm, resumeData, setResumeData])

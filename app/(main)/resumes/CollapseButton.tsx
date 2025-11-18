@@ -4,7 +4,7 @@ import gsap from 'gsap'
 
 interface CollapseButtonProps{
     title : string
-    reference : RefObject<HTMLDivElement>
+    reference : RefObject<HTMLDivElement | null>
     expand : boolean
     setExpand: React.Dispatch<React.SetStateAction<boolean>>
 }
