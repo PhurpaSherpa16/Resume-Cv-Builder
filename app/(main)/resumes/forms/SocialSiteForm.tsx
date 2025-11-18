@@ -1,7 +1,7 @@
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { EditorProps } from '@/lib/type'
-import { ResumeValues, socialSiteSchema, SocialSiteValues } from '@/lib/validation'
+import { socialSiteSchema, SocialSiteValues } from '@/lib/validation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
@@ -24,10 +24,10 @@ export default function SocialSiteForm({resumeData, setResumeData}:EditorProps) 
     })
 
     useEffect(()=>{
-        const {unsubscribe} = socialSiteForm.watch(async (_, {name}) =>{
-            const valid = await socialSiteForm.trigger(name)
+        const {unsubscribe} = socialSiteForm.watch(async (values) =>{
+            const valid = await socialSiteForm.trigger()
             if(!valid) return
-            setResumeData((prev: unknown) => ({...prev, [name]:socialSiteForm.getValues(name)}))
+            setResumeData({ ...resumeData, ...values });
         })
         return unsubscribe
     },[socialSiteForm, resumeData, setResumeData])

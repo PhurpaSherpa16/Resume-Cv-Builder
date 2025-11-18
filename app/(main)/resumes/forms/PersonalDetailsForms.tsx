@@ -24,10 +24,10 @@ export default function PersonalDetailsForms({resumeData, setResumeData}:EditorP
 
     // optimazied varient
     useEffect(()=>{
-        const {unsubscribe} = form.watch(async (_, {name}) =>{
-            const valid = await form.trigger(name)
+        const {unsubscribe} = form.watch(async (values) =>{
+            const valid = await form.trigger()
             if(!valid) return
-            setResumeData(prev => ({...prev, [name]:form.getValues(name)}))
+            setResumeData({ ...resumeData, ...values });
         })
         return unsubscribe
     },[form, resumeData, setResumeData])
@@ -55,8 +55,7 @@ export default function PersonalDetailsForms({resumeData, setResumeData}:EditorP
                                         ref={photoRef}
                                         accept='image/*'
                                         onChange={(e)=>{
-                                            const file = e.target.files?.[0]
-                                            onChange(file)
+                                            onChange(e.target.files?.[0])
                                         }}/>
                                     </FormControl>
                                     <FormMessage/>

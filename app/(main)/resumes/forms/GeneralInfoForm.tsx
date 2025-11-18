@@ -17,10 +17,10 @@ export default function GeneralInfoForm({resumeData, setResumeData}:EditorProps)
     })
 
     useEffect(()=>{
-        const {unsubscribe} = form.watch(async (_,{name})=>{
-            const valid = await form.trigger(name)
+        const {unsubscribe} = form.watch(async (values)=>{
+            const valid = await form.trigger()
             if(!valid) return
-            setResumeData(prev => ({...prev, [name]:form.getValues(name)}))
+            setResumeData({ ...resumeData, ...values });
         })
         return unsubscribe
     },[form, resumeData, setResumeData])
