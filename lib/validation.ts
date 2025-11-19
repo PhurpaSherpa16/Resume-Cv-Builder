@@ -105,6 +105,8 @@ export const resumeSchema = z.object({
     ...summarySchema.shape,
     ...skillSchema.shape,
     ...socialSiteSchema.shape,
+    colorHex : optionalString,
+    borderStyle : optionalString
 })
 
 // Omit<z.infer<typeof resumeSchema>, 'photo'> will omit the photo from personalInformationSchema

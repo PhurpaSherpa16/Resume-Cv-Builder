@@ -53,7 +53,6 @@ export default function EducationForm({resumeData, setResumeData}: EditorProps) 
         move(oldIndex, newIndex)
         return arrayMove(fields, oldIndex, newIndex)
     }
-
   return (
     <div className='space-y-4'>
         <div className='text-center'>

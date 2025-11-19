@@ -7,7 +7,9 @@ export const metadata: Metadata = {
     template : "%s - easy Resume",
     absolute : 'Resume Builder',
   },
-  icons: '/ghost.png',
+  icons: {
+    icon: "/ghost.png",
+  },
   description: "Next JS CV Resume Maker",
 };
 

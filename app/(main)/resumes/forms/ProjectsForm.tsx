@@ -148,7 +148,7 @@ function ProjectForm({index, id, projectForm, remove}:ProjectProps){
                 )}/>
                 <FormField 
                 control={projectForm.control}
-                name={`listOfProjects.${index}.projectLink`}
+                name={`listOfProjects.${index}.description`}
                 render={({field})=>(
                     <FormItem>
                         <FormLabel>Project Link</FormLabel>

@@ -9,7 +9,9 @@ export const metadata : Metadata ={
 export default function page() {
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={
+        <div className='container py-8'>Loading...</div>
+        }>
         <ResumeEdit/>
       </Suspense>
     </>

@@ -35,7 +35,7 @@ export default function SocialSiteForm({resumeData, setResumeData}:EditorProps) 
   return (
     <div className='space-y-4'>
         <div className='text-center'>
-            <h2>Personal Information</h2>
+            <h2>Social Site</h2>
             <p>These details help employers reach out to you easily.</p>
         </div>
         <Form {...socialSiteForm}>
