@@ -6,6 +6,9 @@ import { steps } from './Steps'
 import Footer from './Footer'
 import { ResumeValues } from '@/lib/validation'
 import PreviewSection from './PreviewSection'
+import { cn } from '@/lib/utils'
+import { useMediaQuery } from 'react-responsive'
+
 
 export default function ResumeEdit() {
   // all resume data are store her 1st step
@@ -69,6 +72,10 @@ Proven experience delivering polished, production-ready websites that meet busin
 
   const searchParams = useSearchParams()
   const currentStep = searchParams.get('step') || steps[0].key
+  const [showResumePreview, setShowResumePreview] = useState(false)
+
+  const isMd = useMediaQuery({query: '(min-width: 769px)'})
+  const isXs = useMediaQuery({query: '(min-width: 426px)'})
 
   function setStep(key: string){
     const newSearchParams = new URLSearchParams(searchParams)
@@ -76,15 +83,49 @@ Proven experience delivering polished, production-ready websites that meet busin
     window.history.pushState(null, '', `?${newSearchParams.toString()}`)
   }
 
+
   // this formcomponent will tell which component shoudl visiable and hide
   const FormComponent = steps.find(step => step.key === currentStep)?.component
 
   return (
-     <div className="container py-8 pb-100">
-        <div className='grid grid-cols-12 lg:divide-x h-full overflow-hidden
-        gap-4'>
-            <div className='col-span-12 lg:col-span-6 h-[85vh] 2xl:h-[90vh]'>
+    <>
+    {/* Tablet and Mobile Version */}
+    {!isMd ?
+      <div className='px-4 md:px-8 lg:px-0 py-4 lg:py-8'>
+        <div className='relative space-y-4  h-full'>
+          <div className='relative space-y-2'>
+            <div>
+              <h1>Your Career. Your Story. Your Resume.</h1>
+              <p>Fill in your experience and watch your resume come alive instantly.</p>
+            </div>
+          </div>
+          
+          {showResumePreview ?
+          <div className='h-[60vh] overflow-scroll'>
+            <PreviewSection resumeData={resumeData} setResumeData={setResumeData}
+            className={cn(showResumePreview && 'flex')}/>
+          </div>
+          :
+          <div className='h-[60vh] overflow-scroll'
+          style={{height:isXs?'68vh':'47vh'}}>
               <div>
+                <BreadCrumbSteps currentsteps={currentStep} setCurrentSteps={setStep}/>
+              </div>
+              {FormComponent && <FormComponent resumeData={resumeData} setResumeData={setResumeData}/>}
+          </div>
+          }
+          <div className='absolute w-full -bottom-15'>
+            <Footer currentsteps={currentStep} setCurrentSteps={setStep}
+              showResumePreview={showResumePreview} setShowResumePreview={setShowResumePreview}/>
+          </div>
+        </div>
+      </div>
+      :
+     <div className="container py-8 pb-100">
+        <div className='grid grid-cols-12 md:divide-x h-[85vh] overflow-hidden
+        gap-4'>
+            <div className='col-span-12 md:col-span-6'>
+              <div className='h-[77vh] overflow-hidden'>
                 <header className='space-y-4 pb-4'>
                   <div>
                     <h1>Your Career. Your Story. Your Resume.</h1>
@@ -94,15 +135,17 @@ Proven experience delivering polished, production-ready websites that meet busin
                     <BreadCrumbSteps currentsteps={currentStep} setCurrentSteps={setStep}/>
                   </div>
                 </header>
-
-                <main className='h-[59vh] 2xl:h-[65vh] overflow-scroll py-4 pr-4'>
+                <main className={cn('h-[65vh] 2xl:h-[65vh] overflow-scroll py-4 pr-4', showResumePreview && 'hidden')}>
                     {FormComponent && <FormComponent resumeData={resumeData} setResumeData={setResumeData}/>}
                 </main>
               </div>
-              <Footer currentsteps={currentStep} setCurrentSteps={setStep}/>
+              <Footer currentsteps={currentStep} setCurrentSteps={setStep}
+              showResumePreview={showResumePreview} setShowResumePreview={setShowResumePreview}/>
             </div>
             <PreviewSection resumeData={resumeData} setResumeData={setResumeData}/>
         </div>
     </div>
+    }
+  </>
   )
 }

@@ -1,5 +1,4 @@
 import { ResumePreviewProps } from '@/lib/type'
-import React from 'react'
 import { FaBehance, FaDribbble, FaFacebook, FaGithub, FaInstagram, FaKaggle, FaMedium } from 'react-icons/fa'
 import { TbWorldWww } from 'react-icons/tb'
 

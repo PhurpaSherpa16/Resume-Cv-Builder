@@ -6,7 +6,7 @@ import React from 'react'
 export default function Navbar() {
   return (
     <header className='border-b'>
-        <div className='container py-4 flex  items-center justify-between'>
+        <div className='container py-4 flex  items-center justify-between px-4 md:px-8 lg:px-0'>
           <div className='flex items-end gap-2'>
             <Link href={'/resumes'}>
               <div className='size-12 bg-gray-300 rounded'></div>

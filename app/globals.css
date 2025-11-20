@@ -8,14 +8,33 @@
   margin-inline: auto;
 }
 
+@media print{
+  #resumePreviewDiv{
+    zoom: 1 !important;
+    padding: 0;
+  }
+}
+
+#resumePreviewDiv{
+  font-family: Arial, Helvetica, sans-serif ;
+}
+
+@page{
+  size: A4;
+  margin: 0.6cm;
+  padding: 1cm;
+}
+
+
 @layer utilities{
   h1{
     @apply
-    text-4xl font-bold leading-tight
+    text-2xl text-balance lg:text-4xl font-bold leading-tight
   }
+
   h2{
     @apply
-    text-2xl font-semibold leading-tight
+    text-xl text-balance lg:text-2xl font-bold leading-tight
   }
 
   button{
@@ -23,28 +42,24 @@
     cursor-pointer
   }
 
-  .preview h1{
+  #resumePreviewDiv h1{
     @apply
-    text-3xl
+    text-2xl uppercase
   }
 
-  .preview .name{
+  #resumePreviewDiv h2{
     @apply
-    text-[24px] tracking-wider uppercase
+    text-[14px] font-semibold
   }
 
-  .preview h2{
+  #resumePreviewDiv p{
     @apply
-    text-[16px] font-semibold
+    lg:text-[14px]
   }
-
-  .preview p{
+  
+  #resumePreviewDiv span{
     @apply
-    text-[14px]
-  }
-  .preview span{
-    @apply
-    text-[14px]
+    lg:text-[14px]
   }
 
 }

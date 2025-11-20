@@ -12,9 +12,10 @@ import SocialSite from './ResumeDesignItem/modern/SocialSite'
 interface ResumePreviewProps{
     resumeData : ResumeValues
     className : string
+    contentRef : React.Ref<HTMLDivElement>
 }
 
-export default function ResumePreview({resumeData, className}:ResumePreviewProps) {
+export default function ResumePreview({resumeData, className, contentRef}:ResumePreviewProps) {
 
     const containerRef = useRef<HTMLDivElement>(null)
 
@@ -24,7 +25,7 @@ export default function ResumePreview({resumeData, className}:ResumePreviewProps
     <div ref={containerRef} className={cn('bg-white text-black h-fit w-full aspect-210/297 border rounded py-8 px-6 relative', className)}>
         <div className={cn('previewDiv space-y-4', !width && 'invisible')}
         style={{zoom: (1/794)* width}}
-        ref={containerRef} id='resumePreviewDiv'>
+        ref={contentRef} id='resumePreviewDiv'>
             <PersonalPreview resumeData={resumeData}/>
             <div className='grid grid-cols-12 pt-4 gap-2'>
                 <div className='col-span-7 pr-12'>

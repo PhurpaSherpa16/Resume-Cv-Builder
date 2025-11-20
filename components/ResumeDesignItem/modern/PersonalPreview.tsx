@@ -2,7 +2,7 @@ import { BorderStyles } from '@/app/(main)/resume-editor/BorderStyleButton'
 import { ResumePreviewProps } from '@/lib/type'
 import Image from 'next/image'
 import React, { useEffect, useMemo } from 'react'
-import { FaLinkedin, FaPhone, FaPhoneAlt } from 'react-icons/fa'
+import { FaLinkedin, FaPhoneAlt } from 'react-icons/fa'
 import { MdEmail, MdLocationOn } from 'react-icons/md'
 
 export default function PersonalPreview({resumeData}:ResumePreviewProps) {
@@ -31,8 +31,7 @@ export default function PersonalPreview({resumeData}:ResumePreviewProps) {
       <div className='w-full'>
           <div className="flex justify-between w-full items-center">
             <div>
-                <h1 className='name'
-                style={{color: colorHex}}>{firstName} {lastName}</h1>
+                <h1 style={{color: colorHex}}>{firstName} {lastName}</h1>
                 <h2>{jobTitle}</h2>
                 <div className="grid">
                     {linkedin &&

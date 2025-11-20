@@ -17,7 +17,12 @@ export default function ExpereinceAndProjects({resumeData}:ResumePreviewProps) {
           <div className='space-y-4'>
             {listOfWorkExperiences?.map((item, index)=>(
               <div key={index} className='grid gap-1 pb-4 last:border-0 border-b border-dotted border-black'>
-                  <h2>{item.position}</h2>
+                  { item.position && 
+                    <div className='flex items-center gap-2'>
+                      <div className='size-2 bg-black rounded-full'/>
+                      <h2>{item.position}</h2>
+                    </div>
+                  }
                 <div className='flex items-center gap-4'>
                     {item.company && 
                     <span className='flex items-center gap-1'>
@@ -47,7 +52,12 @@ export default function ExpereinceAndProjects({resumeData}:ResumePreviewProps) {
             <div className='space-y-4'>
               {listOfProjects?.map((item, index)=>(
                 <div key={index} className='grid gap-1 pb-4 last:border-0 border-b border-dotted border-black'>
-                    <h2>{item.projectName}</h2>
+                   { item.projectName && 
+                    <div className='flex items-center gap-2'>
+                      <div className='size-2 bg-black rounded-full'/>
+                      <h2>{item.projectName}</h2>
+                    </div>
+                  }
                    <div className='flex items-center gap-4'>
                       {item.projectLink && 
                       <span className='flex items-center gap-1 underline'>

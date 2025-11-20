@@ -6,7 +6,6 @@ import { MdSchool } from 'react-icons/md'
 
 export default function Education({resumeData}:ResumePreviewProps) {
     const {listOfEducation} = resumeData
-    console.log(resumeData)
   return (
     <div>
         {listOfEducation?.length !== 0 ?

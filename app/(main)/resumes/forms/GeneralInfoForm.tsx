@@ -25,8 +25,6 @@ export default function GeneralInfoForm({resumeData, setResumeData}:EditorProps)
         return unsubscribe
     },[form, resumeData, setResumeData])
 
-    console.log('resume Data, ', resumeData)
-
   return (
     <div className='space-y-4'>
         <div className='text-center'>

@@ -15,14 +15,14 @@ export default function SummaryForm({resumeData, setResumeData}:EditorProps) {
     })
 
     useEffect(() => {
-    const subscription = summaryForm.watch(async (values) => {
-        const isValid = await summaryForm.trigger();
-        if (!isValid) return;
-        setResumeData({...resumeData, ...values});
-    });
+        const subscription = summaryForm.watch(async (values) => {
+            const isValid = await summaryForm.trigger();
+            if (!isValid) return;
+            setResumeData({...resumeData, ...values});
+        });
 
-  return () => subscription.unsubscribe();
-}, [summaryForm, setResumeData]);
+    return () => subscription.unsubscribe();
+    }, [summaryForm, resumeData, setResumeData]);
 
   return (
     <div className='space-y-4'>
