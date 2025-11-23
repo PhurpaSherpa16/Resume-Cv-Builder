@@ -29,16 +29,12 @@ export default function ResumePreview({resumeData, className, contentRef}:Resume
         style={{zoom: (1/794)* width}}
         ref={contentRef} id='resumePreviewDiv'>
             <PersonalPreview resumeData={resumeData}/>
-            <div className='grid grid-cols-12 pt-4 gap-2'>
-                <div className='col-span-7 pr-12'>
-                    <ExpereinceAndProjects resumeData={resumeData}/>
-                </div>
-                <div className='col-span-5 space-y-4'>
-                    <Summary resumeData={resumeData}/>
-                    <Skills resumeData={resumeData}/>
-                    <Education resumeData={resumeData}/>
-                    <SocialSite resumeData={resumeData}/>
-                </div>
+            <div className='grid space-y-2 gap-2'>
+                <Summary resumeData={resumeData}/>
+                <ExpereinceAndProjects resumeData={resumeData}/>
+                <Skills resumeData={resumeData}/>
+                <Education resumeData={resumeData}/>
+                <SocialSite resumeData={resumeData}/>
             </div>
         </div>
     </div>

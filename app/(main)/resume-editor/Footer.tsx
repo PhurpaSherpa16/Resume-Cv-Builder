@@ -20,8 +20,6 @@ export default function Footer({currentsteps, setCurrentSteps, showResumePreview
         (_, index) => steps[index - 1]?.key === currentsteps
     )?.key
 
-    console.log(showResumePreview)
-
   return (
     <footer className='py-4 flex gap-4 justify-between pr-4'>
         <div className='flex items-center gap-4'>

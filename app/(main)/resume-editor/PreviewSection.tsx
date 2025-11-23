@@ -1,8 +1,5 @@
-import ModernDesign from '@/components/ModernDesign'
 import { ResumeValues } from '@/lib/validation'
-import React, { useRef } from 'react'
-import BorderStyleButton from './BorderStyleButton'
-import ColorStyle from './ColorStyle'
+import { lazy, useRef } from 'react'
 import { Button } from '@/components/ui/button'
 import { Printer } from 'lucide-react'
 import {useReactToPrint} from 'react-to-print'
@@ -14,9 +11,16 @@ interface ResumePreviewProps{
     resumeData : ResumeValues
     setResumeData : (data : ResumeValues ) => void
     className?:string
+    template : string  | undefined
 }
 
-export default function PreviewSection({resumeData, setResumeData, className}:ResumePreviewProps) {
+const ModernDesign = lazy(()=>import('@/components/ModernDesign'))
+const ClassicDesign = lazy(()=>import('@/components/ClassicDesign'))
+const ColorStyle = lazy(()=>import('./ColorStyle'))
+const BorderStyleButton = lazy(()=>import('./BorderStyleButton'))
+
+
+export default function PreviewSection({resumeData, setResumeData, className, template}:ResumePreviewProps) {
 
   const contentRef = useRef(null)
 
@@ -27,7 +31,7 @@ export default function PreviewSection({resumeData, setResumeData, className}:Re
   })
 
   return (
-    <div className={cn('group preview flex flex-col md:col-span-6 overflow-y-auto pb-8', className)}>
+    <div className={cn('group preview flex flex-col md:col-span-6 overflow-y-auto lg:pb-8', className)}>
         <div className='relative z-10 flex gap-4 px-4 lg:pb-4'>
            <ColorStyle color={resumeData.colorHex} 
           onChange={(item)=>setResumeData({...resumeData, colorHex: item})}/>
@@ -41,8 +45,13 @@ export default function PreviewSection({resumeData, setResumeData, className}:Re
           </Button>
 
         </div>
-        <div className='p-4 flex items-center w-full justify-center'>
-            <ModernDesign contentRef={contentRef} resumeData={resumeData} className='shadow max-w-2xl'/>
+        <div className='pt-4 lg:p-4 flex items-center w-full justify-center'>
+            {template === 'modern_design' ?
+              <ModernDesign contentRef={contentRef} resumeData={resumeData} className='shadow max-w-2xl'/>
+              :  
+              <ClassicDesign contentRef={contentRef} resumeData={resumeData} className='shadow max-w-2xl'/>
+            }
+
         </div>
     </div>
   )

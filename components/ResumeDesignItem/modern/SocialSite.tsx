@@ -19,7 +19,7 @@ export default function SocialSite({resumeData}:ResumePreviewProps) {
 
   return (
     <div className='space-y-4'>
-        <h2 className='border-b-2 pb-2 border-black'>Social Site</h2>
+        <h2 className='border-b-2  pb-2 border-black'>Social Site</h2>
         <div className='space-y-4'>
             {validSocials.map((item, index)=>(
                <p key={index} className="flex flex-wrap grow items-center gap-1">

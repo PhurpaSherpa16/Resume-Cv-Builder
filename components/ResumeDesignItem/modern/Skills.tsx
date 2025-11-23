@@ -4,7 +4,7 @@ import React from 'react'
 export default function Skills({resumeData}:ResumePreviewProps) {
     const {listOfSkills, colorHex} = resumeData
   return (
-    <div className='space-y-4'>
+    <div>
 
         {listOfSkills?.length !==0 ?
             <div className='space-y-4'>

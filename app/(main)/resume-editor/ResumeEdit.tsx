@@ -1,16 +1,20 @@
 'use client'
-import { useState } from 'react'
+import { lazy, useEffect, useState } from 'react'
 import BreadCrumbSteps from './BreadCrumbSteps'
 import { useSearchParams } from 'next/navigation'
 import { steps } from './Steps'
 import Footer from './Footer'
 import { ResumeValues } from '@/lib/validation'
-import PreviewSection from './PreviewSection'
 import { cn } from '@/lib/utils'
 import { useMediaQuery } from 'react-responsive'
 
+const PreviewSection = lazy(()=>import('./PreviewSection'))
 
-export default function ResumeEdit() {
+interface ResumeEditProps{
+  template : string | undefined
+}
+
+export default function ResumeEdit({template}:ResumeEditProps) {
   // all resume data are store her 1st step
   // check validation also
   const [resumeData, setResumeData] = useState<ResumeValues>({
@@ -71,11 +75,11 @@ Proven experience delivering polished, production-ready websites that meet busin
   // search Params to address breadcrumb steps
 
   const searchParams = useSearchParams()
+
   const currentStep = searchParams.get('step') || steps[0].key
   const [showResumePreview, setShowResumePreview] = useState(false)
 
   const isMd = useMediaQuery({query: '(min-width: 769px)'})
-  const isXs = useMediaQuery({query: '(min-width: 426px)'})
 
   function setStep(key: string){
     const newSearchParams = new URLSearchParams(searchParams)
@@ -87,11 +91,26 @@ Proven experience delivering polished, production-ready websites that meet busin
   // this formcomponent will tell which component shoudl visiable and hide
   const FormComponent = steps.find(step => step.key === currentStep)?.component
 
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(()=>{
+      const timer = setTimeout(()=>setMounted(true), 100)
+      return ()=>clearTimeout(timer)
+  },[])
+
+  if(!mounted){
+    return (
+      <div className="container py-8">
+        <p>Loading...</p>
+      </div>
+    )
+  }
+
   return (
     <>
     {/* Tablet and Mobile Version */}
     {!isMd ?
-      <div className='px-4 md:px-8 lg:px-0 py-4 lg:py-8'>
+      <div className='px-4 md:px-8 lg:px-0 py-4 lg:py-8 h-full'>
         <div className='relative space-y-4  h-full'>
           <div className='relative space-y-2'>
             <div>
@@ -101,20 +120,19 @@ Proven experience delivering polished, production-ready websites that meet busin
           </div>
           
           {showResumePreview ?
-          <div className='h-[60vh] overflow-scroll'>
-            <PreviewSection resumeData={resumeData} setResumeData={setResumeData}
+          <div className='h-full'>
+            <PreviewSection template={template} resumeData={resumeData} setResumeData={setResumeData}
             className={cn(showResumePreview && 'flex')}/>
           </div>
           :
-          <div className='h-[60vh] overflow-scroll'
-          style={{height:isXs?'68vh':'47vh'}}>
+          <div className='min-h-[50vh]'>
               <div>
                 <BreadCrumbSteps currentsteps={currentStep} setCurrentSteps={setStep}/>
               </div>
               {FormComponent && <FormComponent resumeData={resumeData} setResumeData={setResumeData}/>}
           </div>
           }
-          <div className='absolute w-full -bottom-15'>
+          <div className='relative w-full'>
             <Footer currentsteps={currentStep} setCurrentSteps={setStep}
               showResumePreview={showResumePreview} setShowResumePreview={setShowResumePreview}/>
           </div>
@@ -142,7 +160,8 @@ Proven experience delivering polished, production-ready websites that meet busin
               <Footer currentsteps={currentStep} setCurrentSteps={setStep}
               showResumePreview={showResumePreview} setShowResumePreview={setShowResumePreview}/>
             </div>
-            <PreviewSection resumeData={resumeData} setResumeData={setResumeData}/>
+            <PreviewSection resumeData={resumeData} setResumeData={setResumeData}
+            template={template}/>
         </div>
     </div>
     }

@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
     remotePatterns:[
       {
         protocol : 'https',
+        hostname : 'sb.kaleidousercontent.com'
+      },
+      {
+        protocol : 'https',
         hostname : 'render.fineartamerica.com'
       }
     ]

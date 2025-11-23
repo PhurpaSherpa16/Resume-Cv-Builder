@@ -8,12 +8,22 @@
   margin-inline: auto;
 }
 
+
+@supports (-webkit-touch-callout: none) {
+  @media print {
+    body {
+      zoom: 0.85 !important;
+    }
+  }
+}
+
 @media print{
   #resumePreviewDiv{
     zoom: 1 !important;
     padding: 0;
   }
 }
+
 
 #resumePreviewDiv{
   font-family: Arial, Helvetica, sans-serif ;
@@ -49,18 +59,18 @@
 
   #resumePreviewDiv h2{
     @apply
-    text-[14px] font-semibold
+    text-[16px] font-semibold
   }
 
-  #resumePreviewDiv p{
+  /* #resumePreviewDiv p{
     @apply
-    lg:text-[14px]
+    text-[14px]
   }
   
   #resumePreviewDiv span{
     @apply
-    lg:text-[14px]
-  }
+    text-[14px]
+  } */
 
 }
 

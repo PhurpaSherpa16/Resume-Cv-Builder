@@ -1,0 +1,59 @@
+{
+  "firstName": "Aarav",
+  "lastName": "Khadka",
+  "jobTitle": "Frontend Developer",
+  "linkedin": "https://www.linkedin.com/in/aaravkhadka",
+  "email": "aarav.khadka.dev@example.com",
+  "phone": "9801234567",
+  "country": "Nepal",
+  "city": "Kathmandu",
+  "summary": "Frontend Developer with strong skills in building clean, responsive, and high-performance web applications. Passionate about modern UI, smooth user experience, and writing maintainable, scalable code. Proven ability to convert ideas into polished products while optimizing performance and accessibility.",
+  "photo": "https://sb.kaleidousercontent.com/67418/1000x1000/8fbbfc9296/cv-color-thumbnail.png",
+
+  "listOfWorkExperiences": [
+    {
+      "company": "PixelWave Technologies",
+      "position": "Frontend Developer",
+      "startDate": "12 Feb, 2021",
+      "endDate": "",
+      "description": "Developing modern, responsive web applications using React, Next.js, and TypeScript. Implemented reusable components, improved page performance by 30%, and collaborated with designers to ensure pixel-perfect UI. Worked closely with backend teams to integrate REST APIs and deliver scalable production features."
+    },
+    {
+      "company": "SoftNet Solutions",
+      "position": "Junior Web Developer",
+      "startDate": "13 Aug, 2017",
+      "endDate": "05 May, 2020",
+      "description": "Built and maintained UI components using JavaScript, React, and Tailwind CSS. Assisted in developing dashboard interfaces, improved accessibility scores, and fixed UI bugs, reducing user-reported issues by 25%."
+    }
+  ],
+
+  "listOfProjects": [
+    {
+      "projectName": "Modern Portfolio Website",
+      "projectLink": "https://portfolio.example.com",
+      "description": "Designed and developed a sleek, minimal personal portfolio using Next.js and Tailwind CSS. Implemented smooth animations, responsive layouts, and optimized the site for SEO and Core Web Vitals."
+    }
+  ],
+
+  "listOfEducation": [
+    {
+      "schoolName": "Kathmandu University School of Science",
+      "degree": "BSc. in Computer Science"
+    }
+  ],
+
+  "listOfSkills": [
+    "Next.js",
+    "React.js",
+    "TypeScript",
+    "JavaScript (ES6+)",
+    "Tailwind CSS",
+    "Responsive UI/UX",
+    "REST API Integration",
+    "Git & GitHub"
+  ],
+
+  "github": "https://github.com/aaravkhadka",
+  "portfolio": "https://portfolio.example.com",
+  "behance": "https://www.behance.net/aaravkhadka"
+}
